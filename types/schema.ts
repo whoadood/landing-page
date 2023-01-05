@@ -1,6 +1,5 @@
 import type {
   SanityReference,
-  SanityKeyedReference,
   SanityAsset,
   SanityImage,
   SanityFile,
@@ -9,17 +8,10 @@ import type {
   SanityDocument,
   SanityImageCrop,
   SanityImageHotspot,
-  SanityKeyed,
-  SanityImageAsset,
-  SanityImageMetadata,
-  SanityImageDimensions,
-  SanityImagePalette,
-  SanityImagePaletteSwatch,
 } from 'sanity-codegen'
 
 export type {
   SanityReference,
-  SanityKeyedReference,
   SanityAsset,
   SanityImage,
   SanityFile,
@@ -28,12 +20,6 @@ export type {
   SanityDocument,
   SanityImageCrop,
   SanityImageHotspot,
-  SanityKeyed,
-  SanityImageAsset,
-  SanityImageMetadata,
-  SanityImageDimensions,
-  SanityImagePalette,
-  SanityImagePaletteSwatch,
 }
 
 /**
@@ -49,7 +35,7 @@ export interface SanityAbout extends SanityDocument {
    *
    *
    */
-  navigationURLs?: Array<SanityKeyedReference<SanityNavigation>>
+  navigationURLs?: Array<SanityReference<SanityNavigation>>
 
   /**
    * Title — `string`
@@ -71,8 +57,8 @@ export interface SanityAbout extends SanityDocument {
    *
    */
   previewImage?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
+    _type: 'previewImage'
+    asset: SanityAsset
     crop?: SanityImageCrop
     hotspot?: SanityImageHotspot
   }
@@ -110,7 +96,7 @@ export interface SanityAbout extends SanityDocument {
    *
    *
    */
-  users?: Array<SanityKeyedReference<SanityUser>>
+  users?: Array<SanityReference<SanityUser>>
 }
 
 /**
@@ -141,8 +127,8 @@ export interface SanityUser extends SanityDocument {
    *
    */
   logo?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
+    _type: 'logo'
+    asset: SanityAsset
     crop?: SanityImageCrop
     hotspot?: SanityImageHotspot
   }
@@ -207,7 +193,7 @@ export interface SanitySeo extends SanityDocument {
    */
   image?: {
     _type: 'image'
-    asset: SanityReference<SanityImageAsset>
+    asset: SanityAsset
     crop?: SanityImageCrop
     hotspot?: SanityImageHotspot
   }
@@ -241,8 +227,8 @@ export interface SanityGithubMock extends SanityDocument {
    *
    */
   mockimage?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
+    _type: 'mockimage'
+    asset: SanityAsset
     crop?: SanityImageCrop
     hotspot?: SanityImageHotspot
   }
@@ -252,7 +238,7 @@ export interface SanityGithubMock extends SanityDocument {
    *
    *
    */
-  titleRich?: Array<SanityKeyed<SanityBlock>>
+  titleRich?: Array<SanityBlock>
 }
 
 /**
@@ -283,8 +269,8 @@ export interface SanityCalender extends SanityDocument {
    *
    */
   calenderImage?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
+    _type: 'calenderImage'
+    asset: SanityAsset
     crop?: SanityImageCrop
     hotspot?: SanityImageHotspot
   }
@@ -294,7 +280,7 @@ export interface SanityCalender extends SanityDocument {
    *
    *
    */
-  titleRich?: Array<SanityKeyed<SanityBlock>>
+  titleRich?: Array<SanityBlock>
 }
 
 /**
@@ -332,8 +318,8 @@ export interface SanityFeature extends SanityDocument {
    *
    */
   previewImage?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
+    _type: 'previewImage'
+    asset: SanityAsset
     crop?: SanityImageCrop
     hotspot?: SanityImageHotspot
   }
@@ -381,8 +367,8 @@ export interface SanityTestimonial extends SanityDocument {
    *
    */
   userImage?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
+    _type: 'userImage'
+    asset: SanityAsset
     crop?: SanityImageCrop
     hotspot?: SanityImageHotspot
   }
@@ -437,8 +423,8 @@ export interface SanityFooter extends SanityDocument {
    *
    */
   icon?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
+    _type: 'icon'
+    asset: SanityAsset
     crop?: SanityImageCrop
     hotspot?: SanityImageHotspot
   }
@@ -492,7 +478,7 @@ export interface SanityFeaturedBlog extends SanityDocument {
    *
    *
    */
-  topics?: Array<SanityKeyed<string>>
+  topics?: Array<string>
 
   /**
    * Slug — `slug`
@@ -507,8 +493,8 @@ export interface SanityFeaturedBlog extends SanityDocument {
    *
    */
   coverImage?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
+    _type: 'coverImage'
+    asset: SanityAsset
     crop?: SanityImageCrop
     hotspot?: SanityImageHotspot
   }
@@ -525,7 +511,7 @@ export interface SanityFeaturedBlog extends SanityDocument {
    *
    *
    */
-  blogContent?: Array<SanityKeyed<SanityBlock>>
+  blogContent?: Array<SanityBlock>
 }
 
 /**
@@ -576,7 +562,7 @@ export interface SanityBlog extends SanityDocument {
    *
    *
    */
-  topics?: Array<SanityKeyed<string>>
+  topics?: Array<string>
 
   /**
    * Slug — `slug`
@@ -591,8 +577,8 @@ export interface SanityBlog extends SanityDocument {
    *
    */
   coverImage?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
+    _type: 'coverImage'
+    asset: SanityAsset
     crop?: SanityImageCrop
     hotspot?: SanityImageHotspot
   }
@@ -609,7 +595,7 @@ export interface SanityBlog extends SanityDocument {
    *
    *
    */
-  blogContent?: Array<SanityKeyed<SanityBlock>>
+  blogContent?: Array<SanityBlock>
 }
 
 /**
@@ -640,8 +626,8 @@ export interface SanityPress extends SanityDocument {
    *
    */
   featureImage?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
+    _type: 'featureImage'
+    asset: SanityAsset
     crop?: SanityImageCrop
     hotspot?: SanityImageHotspot
   }
@@ -665,7 +651,7 @@ export interface SanityPress extends SanityDocument {
    *
    *
    */
-  AllAssets?: { _type: 'file'; asset: SanityReference<any> }
+  AllAssets?: { _type: 'AllAssets'; asset: SanityAsset }
 
   /**
    * Last Updated — `date`
@@ -679,21 +665,21 @@ export interface SanityPress extends SanityDocument {
    *
    *
    */
-  dos?: Array<SanityKeyed<string>>
+  dos?: Array<string>
 
   /**
    * donts — `array`
    *
    *
    */
-  donts?: Array<SanityKeyed<string>>
+  donts?: Array<string>
 
   /**
    * OpenSauced Logo — `array`
    *
    *
    */
-  openSaucedLogo?: Array<SanityKeyedReference<SanityOpenSaucedLogo>>
+  openSaucedLogo?: Array<SanityReference<SanityOpenSaucedLogo>>
 }
 
 /**
@@ -731,8 +717,8 @@ export interface SanityOpenSaucedLogo extends SanityDocument {
    *
    */
   svgLogo?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
+    _type: 'svgLogo'
+    asset: SanityAsset
     crop?: SanityImageCrop
     hotspot?: SanityImageHotspot
   }
@@ -743,8 +729,8 @@ export interface SanityOpenSaucedLogo extends SanityDocument {
    *
    */
   pngLogo?: {
-    _type: 'image'
-    asset: SanityReference<SanityImageAsset>
+    _type: 'pngLogo'
+    asset: SanityAsset
     crop?: SanityImageCrop
     hotspot?: SanityImageHotspot
   }
